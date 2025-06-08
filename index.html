@@ -9,6 +9,8 @@
     .container { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     img { max-width: 100%; border-radius: 10px; margin-bottom: 20px; }
     p { font-size: 18px; color: #333; margin-bottom: 20px; line-height: 1.6; white-space: pre-line; }
+    #countdown { font-size: 22px; font-weight: bold; color: #d9534f; }
+    .hidden { display: none; }
     a.btn { display: inline-block; background: #2ea44f; color: #fff; padding: 12px 24px; font-size: 18px; border-radius: 8px; text-decoration: none; }
     a.btn:hover { background: #218838; }
   </style>
@@ -17,10 +19,33 @@
   <div class="container">
     <img src="https://raw.githubusercontent.com/isurulakshitha1/ChatgptFree/main/group-preview.jpg" alt="Group Preview">
     <p>ලින්ක් එක ක්ලික් කරලා තප්පර 10 ඉදලා බැක් වෙන්න ඊට පස්සේ telegram group එකට join වෙන්න පුළුවන්</p>
-    <a class="btn" href="#"
-       onclick="window.open('https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a','_blank'); window.location.href='https://t.me/+KgMkPqmgqqw3Mjc9'; return false;">
-      Join Telegram Group
-    </a>
+    
+    <p id="countdown">Wait 10 seconds...</p>
+    
+    <a id="continueBtn" class="btn hidden" href="#">Join Telegram Group</a>
   </div>
+
+  <script>
+    let counter = 10;
+    const countdown = document.getElementById("countdown");
+    const continueBtn = document.getElementById("continueBtn");
+
+    const interval = setInterval(() => {
+      counter--;
+      countdown.textContent = `Wait ${counter} seconds...`;
+      if (counter <= 0) {
+        clearInterval(interval);
+        countdown.classList.add("hidden");
+        continueBtn.classList.remove("hidden");
+        continueBtn.addEventListener("click", () => {
+          window.open(
+            'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a',
+            '_blank'
+          );
+          window.location.href = 'https://t.me/+KgMkPqmgqqw3Mjc9';
+        });
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
