@@ -2,52 +2,57 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Telegram Group</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; background: #f0f0f0; }
-    .container { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px;
-                 box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    img { max-width: 100%; border-radius: 10px; margin-bottom: 20px; }
-    p { font-size: 18px; color: #333; margin-bottom: 20px; line-height: 1.6; }
-    button { display: inline-block; margin: 10px; padding: 12px 24px; font-size: 16px;
-             border-radius: 8px; cursor: pointer; color: #fff; border: none; }
-    #startBtn { background: #1a73e8; }
-    #joinBtn { background: #28a745; }
-    #joinBtn[disabled] { background: #ccc; cursor: not-allowed; }
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f3f4f6;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #0088cc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #006fa3;
+    }
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+      color: #111;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/isurulakshitha1/ChatgptFree/main/group-preview.jpg" alt="Group Preview">
-    <p>ලින්ක් එක ක්ලික් කරලා තප්පර 10 ඉදලා බැක් වෙන්න ඊට පස්සේ telegram group එකට join වෙන්න පුළුවන්</p>
-
-    <button id="startBtn">Start Verification</button>
-    <button id="joinBtn" disabled>Join Telegram Group</button>
-  </div>
+  <img src="group-preview.jpg" alt="Telegram Group Preview" />
+  <p>ලින්ක් එක ක්ලික් කරලා තප්පර 15-20 ඉදලා බැක් වෙන්න. ඊට පස්සේ Telegram group එකට join වෙන්න පුළුවන්.</p>
+  <button id="joinBtn">Join Telegram Group</button>
 
   <script>
     const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
     const tgUrl = 'https://t.me/+KgMkPqmgqqw3Mjc9';
-    const startBtn = document.getElementById('startBtn');
-    const joinBtn = document.getElementById('joinBtn');
-
-    // On load, if coming from Adsterra, enable the join button
-    if (document.referrer.includes('profitableratecpm.com')) {
-      joinBtn.disabled = false;
-    }
-
-    // Clicking Start takes them to Adsterra (same tab)
-    startBtn.onclick = () => {
-      window.location.href = adUrl;
-    };
-
-    // Clicking Join only works if enabled
-    joinBtn.onclick = () => {
-      if (!joinBtn.disabled) {
+    document.getElementById('joinBtn').addEventListener('click', () => {
+      // Step 1: Open Adsterra ad in new tab
+      window.open(adUrl, '_blank');
+      // Step 2: After 15–20 seconds, redirect to Telegram group
+      setTimeout(() => {
         window.location.href = tgUrl;
-      }
-    };
+      }, 18000); // Set to 18 seconds (you can change this to 20000 for full 20s)
+    });
   </script>
 </body>
 </html>
