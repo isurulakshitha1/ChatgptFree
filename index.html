@@ -10,13 +10,11 @@
                  box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     img { max-width: 100%; border-radius: 10px; margin-bottom: 20px; }
     p { font-size: 18px; color: #333; margin-bottom: 20px; line-height: 1.6; }
-    #countdown { font-size: 20px; color: #d9534f; margin-bottom: 20px; }
     button { display: inline-block; margin: 10px; padding: 12px 24px; font-size: 16px;
              border-radius: 8px; cursor: pointer; color: #fff; border: none; }
     #startBtn { background: #1a73e8; }
     #joinBtn { background: #28a745; }
-    #joinBtn:disabled { background: #ccc; cursor: not-allowed; }
-    .hidden { display: none; }
+    #joinBtn[disabled] { background: #ccc; cursor: not-allowed; }
   </style>
 </head>
 <body>
@@ -24,47 +22,31 @@
     <img src="https://raw.githubusercontent.com/isurulakshitha1/ChatgptFree/main/group-preview.jpg" alt="Group Preview">
     <p>ලින්ක් එක ක්ලික් කරලා තප්පර 10 ඉදලා බැක් වෙන්න ඊට පස්සේ telegram group එකට join වෙන්න පුළුවන්</p>
 
-    <div id="countdown">Wait 10 seconds...</div>
-    <button id="startBtn" class="hidden">Start Verification</button>
-    <button id="joinBtn" disabled class="hidden">Join Telegram Group</button>
+    <button id="startBtn">Start Verification</button>
+    <button id="joinBtn" disabled>Join Telegram Group</button>
   </div>
 
   <script>
     const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
     const tgUrl = 'https://t.me/+KgMkPqmgqqw3Mjc9';
-    const countdownEl = document.getElementById('countdown');
-    const startBtn   = document.getElementById('startBtn');
-    const joinBtn    = document.getElementById('joinBtn');
+    const startBtn = document.getElementById('startBtn');
+    const joinBtn = document.getElementById('joinBtn');
 
-    // Check if user already clicked Ad link
-    if (localStorage.getItem('ad_clicked') === 'true') {
-      countdownEl.classList.add('hidden');
-      startBtn.classList.add('hidden');
-      joinBtn.classList.remove('hidden');
+    // On load, if coming from Adsterra, enable the join button
+    if (document.referrer.includes('profitableratecpm.com')) {
       joinBtn.disabled = false;
-    } else {
-      // 10s countdown then show buttons
-      let timeLeft = 10;
-      const timer = setInterval(() => {
-        countdownEl.textContent = `Wait ${timeLeft--} seconds...`;
-        if (timeLeft < 0) {
-          clearInterval(timer);
-          countdownEl.classList.add('hidden');
-          startBtn.classList.remove('hidden');
-          joinBtn.classList.remove('hidden');
-        }
-      }, 1000);
     }
 
-    // User clicks "Start Verification" → count click, go to Adsterra
+    // Clicking Start takes them to Adsterra (same tab)
     startBtn.onclick = () => {
-      localStorage.setItem('ad_clicked', 'true');
       window.location.href = adUrl;
     };
 
-    // User returns, clicks "Join Telegram Group"
+    // Clicking Join only works if enabled
     joinBtn.onclick = () => {
-      window.location.href = tgUrl;
+      if (!joinBtn.disabled) {
+        window.location.href = tgUrl;
+      }
     };
   </script>
 </body>
