@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Join Telegram Group</title>
   <style>
     body { font-family: Arial, sans-serif; text-align: center; padding: 40px; background: #f0f0f0; }
-    .container { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .container { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 10px;
+                 box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     img { max-width: 100%; border-radius: 10px; margin-bottom: 20px; }
-    p { font-size: 18px; color: #333; margin-bottom: 20px; line-height: 1.6; white-space: pre-line; }
-    #countdown { font-size: 22px; font-weight: bold; color: #d9534f; }
-    .hidden { display: none; }
-    a.btn { display: inline-block; background: #2ea44f; color: #fff; padding: 12px 24px; font-size: 18px; border-radius: 8px; text-decoration: none; }
-    a.btn:hover { background: #218838; }
+    p { font-size: 18px; color: #333; margin-bottom: 20px; line-height: 1.6; }
+    #countdown { font-size: 20px; color: #d9534f; margin-bottom: 20px; }
+    button, a { display: inline-block; margin: 10px; padding: 12px 24px; font-size: 16px;
+                border-radius: 8px; text-decoration: none; cursor: pointer; }
+    #startBtn { background: #1a73e8; color: #fff; border: none; }
+    #joinBtn { background: #28a745; color: #fff; border: none; }
+    #joinBtn:disabled { background: #ccc; cursor: not-allowed; }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://raw.githubusercontent.com/isurulakshitha1/ChatgptFree/main/group-preview.jpg" alt="Group Preview">
+    <img src="https://raw.githubusercontent.com/isurulakshitha1/ChatgptFree/main/group-preview.jpg"
+         alt="Group Preview">
     <p>ලින්ක් එක ක්ලික් කරලා තප්පර 10 ඉදලා බැක් වෙන්න ඊට පස්සේ telegram group එකට join වෙන්න පුළුවන්</p>
+    <div id="countdown">Wait 10 seconds...</div>
     
-    <p id="countdown">Wait 10 seconds...</p>
-    
-    <a id="continueBtn" class="btn hidden" href="#">Join Telegram Group</a>
+    <button id="startBtn" class="hidden">Start Verification</button>
+    <button id="joinBtn" disabled class="hidden">Join Telegram Group</button>
   </div>
 
   <script>
-    let counter = 10;
-    const countdown = document.getElementById("countdown");
-    const continueBtn = document.getElementById("continueBtn");
+    const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
+    const tgUrl = 'https://t.me/+KgMkPqmgqqw3Mjc9';
+    const countdownEl = document.getElementById('countdown');
+    const startBtn   = document.getElementById('startBtn');
+    const joinBtn    = document.getElementById('joinBtn');
 
-    const interval = setInterval(() => {
-      counter--;
-      countdown.textContent = `Wait ${counter} seconds...`;
-      if (counter <= 0) {
-        clearInterval(interval);
-        countdown.classList.add("hidden");
-        continueBtn.classList.remove("hidden");
-        continueBtn.addEventListener("click", () => {
-          window.open(
-            'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a',
-            '_blank'
-          );
-          window.location.href = 'https://t.me/+KgMkPqmgqqw3Mjc9';
-        });
-      }
-    }, 1000);
+    // On load, check if user already clicked ad before
+    const clicked = localStorage.getItem('ad_clicked');
+    if (clicked === 'true') {
+      // Skip countdown, show join button enabled
+      countdownEl.textContent = '';
+      startBtn.classList.add('hidden');
+      joinBtn.classList.remove('hidden');
+      joinBtn.disabled = false;
+    } else {
+      // Start 10s countdown
+      let timeLeft = 10;
+      const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = `Wait ${timeLeft} seconds...`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          countdownEl.textContent = '';
+          startBtn.classList.remove('hidden');
+          joinBtn.classList.remove('hidden');
+        }
+      }, 1000);
+    }
+
+    // When “Start Verification” is clicked
+    startBtn.addEventListener('click', () => {
+      localStorage.setItem('ad_clicked', 'true');
+      window.location.href = adUrl;  // Open Adsterra in same tab
+    });
+
+    // When “Join Telegram Group” is clicked
+    joinBtn.addEventListener('click', () => {
+      window.location.href = tgUrl;
+    });
   </script>
 </body>
 </html>
