@@ -58,6 +58,11 @@
       font-size: 18px;
       display: inline-block;
     }
+    #error {
+      color: #c0392b;
+      font-weight: bold;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -68,29 +73,67 @@
     2️⃣ එවිට මෙහි Telegram Group ලින්ක් එක දිස්වෙයි!<br>
     🟦 <strong>දැන්ම ක්ලික් කරන්න! (Click the button below now!)</strong>
   </p>
+
   <button id="adsterraBtn">Join Telegram Group</button>
   <div id="timer"></div>
   <div id="tg-link">
-    <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">👉 Telegram Group එකට Join වෙන්න</a>
+    <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">
+      👉 Telegram Group එකට Join වෙන්න
+    </a>
   </div>
+  <div id="error"></div>
+
   <script>
-    const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
-    const waitSeconds = 18;
-    document.getElementById('adsterraBtn').addEventListener('click', function() {
+    const adUrl         = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
+    const waitSeconds   = 18;
+    let countdown       = null;
+    let remaining       = waitSeconds;
+    let timerRunning    = false;
+
+    const btn      = document.getElementById('adsterraBtn');
+    const timerDiv = document.getElementById('timer');
+    const tgLink   = document.getElementById('tg-link');
+    const errorDiv = document.getElementById('error');
+
+    function resetProcess(message) {
+      clearInterval(countdown);
+      timerRunning = false;
+      remaining     = waitSeconds;
+      btn.disabled  = false;
+      timerDiv.textContent = '';
+      tgLink.style.display = 'none';
+      errorDiv.textContent = message;
+    }
+
+    btn.addEventListener('click', () => {
+      // 1. Open Adsterra link (counts as click)
       window.open(adUrl, '_blank');
-      this.disabled = true;
-      let timerDiv = document.getElementById('timer');
-      let seconds = waitSeconds;
-      timerDiv.textContent = `තප්පර ${seconds}ක් ඉන්න...`;
-      let countdown = setInterval(() => {
-        seconds--;
-        timerDiv.textContent = `තප්පර ${seconds}ක් ඉන්න...`;
-        if (seconds <= 0) {
+
+      // 2. Prepare for timer
+      btn.disabled = true;
+      errorDiv.textContent = '';
+      timerRunning = true;
+      remaining     = waitSeconds;
+      timerDiv.textContent = `තප්පර ${remaining}ක් ඉන්න...`;
+
+      // 3. Start countdown
+      countdown = setInterval(() => {
+        remaining--;
+        timerDiv.textContent = `තප්පර ${remaining}ක් ඉන්න...`;
+        if (remaining <= 0) {
           clearInterval(countdown);
-          timerDiv.textContent = "";
-          document.getElementById('tg-link').style.display = 'block';
+          timerRunning = false;
+          timerDiv.textContent = '';
+          tgLink.style.display = 'block';
         }
       }, 1000);
+    });
+
+    // 4. Detect if user returns too early
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && timerRunning && remaining > 0) {
+        resetProcess('ඔබ කලින් ආපසු ආවේ. කරුණාකර නැවත ආරම්භ කරන්න.'); 
+      }
     });
   </script>
 </body>
