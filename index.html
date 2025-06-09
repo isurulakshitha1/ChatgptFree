@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Telegram Group</title>
+  <title>Join Telegram Groups</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
       padding: 20px;
       background-color: #f3f4f6;
+    }
+    .group-section {
+      margin: 40px 0;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
     img {
       max-width: 100%;
@@ -26,6 +33,11 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
+      margin: 10px 0;
+    }
+    .premium-btn {
+      background: linear-gradient(45deg, #e74c3c, #f39c12);
+      font-weight: bold;
     }
     button:disabled {
       background-color: #aaa;
@@ -34,22 +46,25 @@
     button:hover:enabled {
       background-color: #006fa3;
     }
+    .premium-btn:hover:enabled {
+      background: linear-gradient(45deg, #c0392b, #e67e22);
+    }
     p {
       font-size: 18px;
       margin: 20px 0;
       color: #111;
       line-height: 1.7;
     }
-    #timer {
+    .timer {
       font-size: 20px;
       margin: 20px 0;
       color: #d35400;
     }
-    #tg-link {
+    .tg-link {
       display: none;
       margin-top: 20px;
     }
-    #tg-link a {
+    .tg-link a {
       background: #0088cc;
       color: #fff;
       padding: 12px 24px;
@@ -58,10 +73,17 @@
       font-size: 18px;
       display: inline-block;
     }
-    #error {
+    .error {
       color: #c0392b;
       font-weight: bold;
       margin-top: 20px;
+    }
+    .premium-text {
+      background: linear-gradient(45deg, #e74c3c, #f39c12);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      font-size: 20px;
     }
   </style>
   
@@ -70,75 +92,105 @@
   <script type='text/javascript' src='//pl26872679.profitableratecpm.com/95/61/b4/9561b474b87d1251904afc638ebc29f3.js'></script>
 </head>
 <body>
-  <img src="group-preview.jpg" alt="Telegram Group Preview" />
-  <p>
-    👉 Telegram Group එකට Join වෙන්න පහත බටනය ක්ලික් කරන්න.<br>
-    1️⃣ බටනය ක්ලික් කරලා නවින් විවෘත වන පිටුවේ තප්පර 15-20ක් ඉන්න.<br>
-    2️⃣ එවිට මෙහි Telegram Group ලින්ක් එක දිස්වෙයි!<br>
-    🟦 <strong>දැන්ම ක්ලික් කරන්න! (Click the button below now!)</strong>
-  </p>
+  <h1>🚀 Join Our Exclusive Telegram Communities</h1>
 
-  <button id="adsterraBtn">Join Telegram Group</button>
-  <div id="timer"></div>
-  <div id="tg-link">
-    <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">
-      👉 Telegram Group එකට Join වෙන්න
-    </a>
+  <!-- Sinhala Group Section -->
+  <div class="group-section">
+    <img src="group-preview.jpg" alt="Telegram Group Preview" />
+    <p>
+      👉 Telegram Group එකට Join වෙන්න පහත බටනය ක්ලික් කරන්න.<br>
+      1️⃣ බටනය ක්ලික් කරලා නවින් විවෘත වන පිටුවේ තප්පර 15-20ක් ඉන්න.<br>
+      2️⃣ එවිට මෙහි Telegram Group ලින්ක් එක දිස්වෙයි!<br>
+      🟦 <strong>දැන්ම ක්ලික් කරන්න! (Click the button below now!)</strong>
+    </p>
+    <button id="sinhalaBtn">Join Sinhala Telegram Group</button>
+    <div id="sinhalaTimer" class="timer"></div>
+    <div id="sinhalaTgLink" class="tg-link">
+      <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">
+        👉 Telegram Group එකට Join වෙන්න
+      </a>
+    </div>
+    <div id="sinhalaError" class="error"></div>
   </div>
-  <div id="error"></div>
+
+  <!-- English Premium Group Section -->
+  <div class="group-section">
+    <img src="group.jpg" alt="Premium English Telegram Group" />
+    <p class="premium-text">🔥 PREMIUM EXCLUSIVE CONTENT 🔥</p>
+    <p>
+      🎯 <strong>Get Premium Exclusive Content for FREE!</strong><br>
+      💎 Join our exclusive Telegram community and unlock:<br>
+    
+      ✅ Exclusive videos & photos<br>
+      ✅ Early access to new content<br>
+      ✅ VIP community support<br><br>
+      🚀 <strong>Click below to get instant access to premium content!</strong>
+    </p>
+    <button id="englishBtn" class="premium-btn">🔓 Get Premium Access FREE</button>
+    <div id="englishTimer" class="timer"></div>
+    <div id="englishTgLink" class="tg-link">
+      <a href="https://t.me/+h_aqfw345H9hZDJl" target="_blank">
+        🎉 Join Premium English Telegram Group
+      </a>
+    </div>
+    <div id="englishError" class="error"></div>
+  </div>
 
   <script>
-    const adUrl         = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
-    const waitSeconds   = 18;
-    let countdown       = null;
-    let remaining       = waitSeconds;
-    let timerRunning    = false;
+    const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
+    const waitSeconds = 18;
 
-    const btn      = document.getElementById('adsterraBtn');
-    const timerDiv = document.getElementById('timer');
-    const tgLink   = document.getElementById('tg-link');
-    const errorDiv = document.getElementById('error');
+    // Function to handle button clicks for both groups
+    function setupGroupButton(btnId, timerId, tgLinkId, errorId) {
+      let countdown = null;
+      let remaining = waitSeconds;
+      let timerRunning = false;
 
-    function resetProcess(message) {
-      clearInterval(countdown);
-      timerRunning = false;
-      remaining     = waitSeconds;
-      btn.disabled  = false;
-      timerDiv.textContent = '';
-      tgLink.style.display = 'none';
-      errorDiv.textContent = message;
+      const btn = document.getElementById(btnId);
+      const timerDiv = document.getElementById(timerId);
+      const tgLink = document.getElementById(tgLinkId);
+      const errorDiv = document.getElementById(errorId);
+
+      function resetProcess(message) {
+        clearInterval(countdown);
+        timerRunning = false;
+        remaining = waitSeconds;
+        btn.disabled = false;
+        timerDiv.textContent = '';
+        tgLink.style.display = 'none';
+        errorDiv.textContent = message;
+      }
+
+      btn.addEventListener('click', () => {
+        window.open(adUrl, '_blank');
+        btn.disabled = true;
+        errorDiv.textContent = '';
+        timerRunning = true;
+        remaining = waitSeconds;
+        timerDiv.textContent = `Wait ${remaining} seconds...`;
+
+        countdown = setInterval(() => {
+          remaining--;
+          timerDiv.textContent = `Wait ${remaining} seconds...`;
+          if (remaining <= 0) {
+            clearInterval(countdown);
+            timerRunning = false;
+            timerDiv.textContent = '';
+            tgLink.style.display = 'block';
+          }
+        }, 1000);
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && timerRunning && remaining > 0) {
+          resetProcess('You returned too early. Please try again.');
+        }
+      });
     }
 
-    btn.addEventListener('click', () => {
-      // 1. Open Adsterra direct link (counts as click)
-      window.open(adUrl, '_blank');
-
-      // 2. Prepare for timer
-      btn.disabled = true;
-      errorDiv.textContent = '';
-      timerRunning = true;
-      remaining     = waitSeconds;
-      timerDiv.textContent = `තප්පර ${remaining}ක් ඉන්න...`;
-
-      // 3. Start countdown
-      countdown = setInterval(() => {
-        remaining--;
-        timerDiv.textContent = `තප්පර ${remaining}ක් ඉන්න...`;
-        if (remaining <= 0) {
-          clearInterval(countdown);
-          timerRunning = false;
-          timerDiv.textContent = '';
-          tgLink.style.display = 'block';
-        }
-      }, 1000);
-    });
-
-    // 4. Detect if user returns too early
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible' && timerRunning && remaining > 0) {
-        resetProcess('ඔබ කලින් ආපසු ආවේ. කරුණාකර නැවත ආරම්භ කරන්න.'); 
-      }
-    });
+    // Setup both group buttons
+    setupGroupButton('sinhalaBtn', 'sinhalaTimer', 'sinhalaTgLink', 'sinhalaError');
+    setupGroupButton('englishBtn', 'englishTimer', 'englishTgLink', 'englishError');
   </script>
 </body>
 </html>
