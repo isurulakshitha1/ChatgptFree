@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="si">
+<!DOCTYPE html><html lang="si">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join Telegram Groups</title>
   <style>
     body {
@@ -85,35 +84,23 @@
       font-weight: bold;
       font-size: 20px;
     }
-  </style>
-
-  <!-- KEEP your Social Bar or In-Page Push from Adsterra via Dashboard -->
-  <!-- (No Adsterra direct .js ad links here anymore) -->
-</head>
+  </style>  <!-- Adsterra Ads -->  <script type='text/javascript' src='//pl26872679.profitableratecpm.com/95/61/b4/9561b474b87d1251904afc638ebc29f3.js'></script>  <script type='text/javascript' src='//pl26872630.profitableratecpm.com/bd/7f/96/bd7f96719c381c2baed99453d9299fc5.js'></script></head>
 <body>
-  <h1>🚀 Join Our Exclusive Telegram Communities</h1>
-
-  <!-- Sinhala Group Section -->
-  <div class="group-section">
+  <h1>🚀 Join Our Exclusive Telegram Communities</h1>  <div class="group-section">
     <img src="group-preview.jpg" alt="Telegram Group Preview" />
     <p>
       👉 Telegram Group එකට Join වෙන්න පහත බටනය ක්ලික් කරන්න.<br>
       1️⃣ බටනය ක්ලික් කරලා නවින් විවෘත වන පිටුවේ තප්පර 15-20ක් ඉන්න.<br>
       2️⃣ එවිට මෙහි Telegram Group ලින්ක් එක දිස්වෙයි!<br>
-      🟦 <strong>දැන්ම ක්ලික් කරන්න! (Click the button below now!)</strong>
+      🟦 <strong>දැන්ම ක්ලික් කරන්න!</strong>
     </p>
     <button id="sinhalaBtn">Join Sinhala Telegram Group</button>
     <div id="sinhalaTimer" class="timer"></div>
     <div id="sinhalaTgLink" class="tg-link">
-      <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">
-        👉 Telegram Group එකට Join වෙන්න
-      </a>
+      <a href="https://t.me/+KgMkPqmgqqw3Mjc9" target="_blank">👉 Join Now</a>
     </div>
     <div id="sinhalaError" class="error"></div>
-  </div>
-
-  <!-- English Premium Group Section -->
-  <div class="group-section">
+  </div>  <div class="group-section">
     <img src="group.jpg" alt="Premium English Telegram Group" />
     <p class="premium-text">🔥 PREMIUM EXCLUSIVE CONTENT 🔥</p>
     <p>
@@ -121,27 +108,20 @@
       💎 Join our exclusive Telegram community and unlock:<br>
       ✅ Exclusive videos & photos<br>
       ✅ Early access to new content<br>
-      ✅ VIP community support<br><br>
-      🚀 <strong>Click below to get instant access to premium content!</strong>
+      ✅ VIP community support
     </p>
     <button id="englishBtn" class="premium-btn">🔓 Get Premium Access FREE</button>
     <div id="englishTimer" class="timer"></div>
     <div id="englishTgLink" class="tg-link">
-      <a href="https://t.me/+h_aqfw345H9hZDJl" target="_blank">
-        🎉 Join Premium English Telegram Group
-      </a>
+      <a href="https://t.me/+h_aqfw345H9hZDJl" target="_blank">🎉 Join Premium Group</a>
     </div>
     <div id="englishError" class="error"></div>
-  </div>
-
-  <script>
-    const adUrls = {
-      sinhala: 'https://otieu.com/4/9430015',
-      english: 'https://otieu.com/4/9443371'
-    };
+  </div>  <script>
+    const sinhalaAdUrl = 'https://otieu.com/4/9430015';
+    const englishAdUrl = 'https://otieu.com/4/9443371';
     const waitSeconds = 18;
 
-    function setupGroupButton(btnId, timerId, tgLinkId, errorId, adLink) {
+    function setupGroupButton(btnId, timerId, tgLinkId, errorId, adUrl) {
       let countdown = null;
       let remaining = waitSeconds;
       let timerRunning = false;
@@ -162,11 +142,10 @@
       }
 
       btn.addEventListener('click', () => {
-        window.open(adLink, '_blank');
+        window.open(adUrl, '_blank');
         btn.disabled = true;
         errorDiv.textContent = '';
         timerRunning = true;
-        remaining = waitSeconds;
         timerDiv.textContent = `Wait ${remaining} seconds...`;
 
         countdown = setInterval(() => {
@@ -188,8 +167,7 @@
       });
     }
 
-    setupGroupButton('sinhalaBtn', 'sinhalaTimer', 'sinhalaTgLink', 'sinhalaError', adUrls.sinhala);
-    setupGroupButton('englishBtn', 'englishTimer', 'englishTgLink', 'englishError', adUrls.english);
-  </script>
-</body>
+    setupGroupButton('sinhalaBtn', 'sinhalaTimer', 'sinhalaTgLink', 'sinhalaError', sinhalaAdUrl);
+    setupGroupButton('englishBtn', 'englishTimer', 'englishTgLink', 'englishError', englishAdUrl);
+  </script></body>
 </html>
