@@ -86,10 +86,6 @@
       font-size: 20px;
     }
   </style>
-  
-  <!-- Adsterra Ad Scripts -->
-  <script type='text/javascript' src='//pl26872630.profitableratecpm.com/bd/7f/96/bd7f96719c381c2baed99453d9299fc5.js'></script>
-  <script type='text/javascript' src='//pl26872679.profitableratecpm.com/95/61/b4/9561b474b87d1251904afc638ebc29f3.js'></script>
 </head>
 <body>
   <h1>🚀 Join Our Exclusive Telegram Communities</h1>
@@ -120,7 +116,6 @@
     <p>
       🎯 <strong>Get Premium Exclusive Content for FREE!</strong><br>
       💎 Join our exclusive Telegram community and unlock:<br>
-    
       ✅ Exclusive videos & photos<br>
       ✅ Early access to new content<br>
       ✅ VIP community support<br><br>
@@ -137,11 +132,13 @@
   </div>
 
   <script>
-    const adUrl = 'https://www.profitableratecpm.com/frdepy8eiq?key=f85f7f4e351faac034d87f83a1c1282a';
+    const adUrls = {
+      sinhala: 'https://otieu.com/4/9430015',
+      english: 'https://otieu.com/4/9443371'
+    };
     const waitSeconds = 18;
 
-    // Function to handle button clicks for both groups
-    function setupGroupButton(btnId, timerId, tgLinkId, errorId) {
+    function setupGroupButton(btnId, timerId, tgLinkId, errorId, adLink) {
       let countdown = null;
       let remaining = waitSeconds;
       let timerRunning = false;
@@ -162,7 +159,7 @@
       }
 
       btn.addEventListener('click', () => {
-        window.open(adUrl, '_blank');
+        window.open(adLink, '_blank');
         btn.disabled = true;
         errorDiv.textContent = '';
         timerRunning = true;
@@ -188,9 +185,8 @@
       });
     }
 
-    // Setup both group buttons
-    setupGroupButton('sinhalaBtn', 'sinhalaTimer', 'sinhalaTgLink', 'sinhalaError');
-    setupGroupButton('englishBtn', 'englishTimer', 'englishTgLink', 'englishError');
+    setupGroupButton('sinhalaBtn', 'sinhalaTimer', 'sinhalaTgLink', 'sinhalaError', adUrls.sinhala);
+    setupGroupButton('englishBtn', 'englishTimer', 'englishTgLink', 'englishError', adUrls.english);
   </script>
 </body>
 </html>
